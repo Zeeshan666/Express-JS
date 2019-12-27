@@ -1,6 +1,8 @@
 const express = require("express"),
   http = require("http");
 const dishRouter = require("./routes/dishRouters");
+const leaderRouter = require("./routes/leaderRouter");
+const promoRouter = require("./routes/promorouter");
 const morgan = require("morgan");
 
 const hostname = "localhost";
@@ -11,7 +13,8 @@ const app = express();
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use("/dishes", dishRouter);
-
+app.use("/leaders", leaderRouter);
+app.use("/promos", promoRouter);
 app.use(express.static(__dirname + "/public"));
 app.use((req, res, next) => {
   //   console.log(req.headers);
